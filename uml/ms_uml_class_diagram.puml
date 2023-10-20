@@ -1,0 +1,92 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package Application {
+    class Vereinsverwaltung << focus >> {
+        -List[] data
+    }
+}
+
+package Presentation {
+    class mainWindow {
+        -view
+        #getState()
+    }
+
+    class subView {
+        -view
+        #getState
+    }
+
+    class Controller {
+        -input
+        +setInput(input)
+    }
+
+    Controller "1" *-- "1" mainWindow :contains
+    Controller "1" *-- "*" subView :contains
+}
+
+package Data {
+    class Mitglieder {
+        -int nummer
+        -String name
+        -String vorname
+        +getMitglied(nummer)
+        +setMitglied(nummer)
+    }
+
+    class Vorstandsmitglieder {
+        -int nummer
+        -String aufgabe
+        +getMitglied(nummer)
+        +setMitglied(nummer)
+    }
+
+    class Beiträge {
+        -int nummer
+        -String text
+        +getBeitrag(nummer)
+        +setBeitrag(nummer)
+    }
+
+    class Konten {
+        -int nummer
+        -int betrag
+        +getKonto(nummer)
+        +setKonto(nummer)
+    }
+
+    class Adressen {
+        -int nummer
+        -String strasse
+        -String stadt
+        +getAdresse(nummer)
+        +setAdresse(nummer)
+    }
+
+    class Sportadressen {
+        -int nummer
+        -String sportart
+        +getAdresse(nummer)
+        +setAdresse(nummer)
+    }
+
+    class Wettkaempfe {
+        -int nummer
+        -String ergebnis
+        +getWettkampf(nummer)
+        +setWettkampf(nummer)
+    }
+
+    Mitglieder "1" *-- "1" Vorstandsmitglieder :contains
+    Mitglieder "1" *-- "*" Beiträge :contains
+    Mitglieder "1" *-- "1" Adressen :contains
+    Wettkaempfe "*" *-- "1" Sportadressen :contains
+    Beiträge "*" *-- "1" Konten :contains
+    Mitglieder "*" *-- "*" Wettkaempfe :contains
+ }
+
+ Vereinsverwaltung "1" o-- "*" Mitglieder :contains
+ Vereinsverwaltung "1" *-- "1" Controller :contains
+@enduml

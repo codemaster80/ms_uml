@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+package Presentation << component >> {
+      component Controller
+}
+
+package Application << component >> {
+      component Vereinsverwaltung
+}
+
+component Webserver << component >> {
+    HTTP .. "Apache"
+}
+
+database MySql << component >> {
+    ODBC - Data
+  folder Data {
+    [Mitglieder]
+    [Vorstandsmitglieder]
+    [Beiträge]
+    [Konten]
+    [Adressen]
+    [Sportadressen]
+    [Wettkämpfe]
+
+  }
+}
+
+Controller -up- Apache
+Controller -down- ODBC
+Controller -up- Application
+@enduml

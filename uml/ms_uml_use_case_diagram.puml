@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+:Vorsteher:
+:Kassenwart:
+:Mitglied:
+
+package Vereinsverwaltung {
+    (Mitgliedsdatensatz anlegen)
+    (Mitgliedsdatensatz anschauen)
+    (Mitgliedsdatensatz bearbeiten)
+    (Mitgliedsdatensatzsatz löschen)
+    (Sportadresse anlegen)
+    (Sportadresse bearbeiten)
+    (Kontenübersicht)
+}
+
+Vorsteher --> (Mitgliedsdatensatz anlegen)
+Vorsteher --> (Mitgliedsdatensatz bearbeiten)
+Vorsteher --> (Mitgliedsdatensatz anschauen)
+Vorsteher --> (Mitgliedsdatensatzsatz löschen)
+Vorsteher --> (Sportadresse anlegen)
+Vorsteher --> (Sportadresse bearbeiten)
+Kassenwart --> (Kontenübersicht)
+Mitglied --> (Mitgliedsdatensatz anschauen)
+Mitglied --> (Mitgliedsdatensatz bearbeiten)
+@enduml
